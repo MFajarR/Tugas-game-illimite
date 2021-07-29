@@ -12,6 +12,7 @@ const express = require("express"),
       isLoggedin = require("./views/assets/js/checkLogin.js"),
       {nanoid} = require("nanoid"),
       mongodbstore = require('connect-mongo')(session),
+      port = process.env.PORT || 3000
       
 
 if(process.env.NODE_ENV !== "production"){
@@ -187,6 +188,6 @@ app.use((err, req, res, next) => {
     return res.render("error.ejs", {statusCode: statusCode, message: message})
 })
 
-app.listen(process.env.PORT || 8080, () => {
-    console.log("Server is rocking at 8080")
+app.listen(port, () => {
+    console.log(`gamestore servers have started on http://localhost:${port} !!`)
 })
